@@ -5,3 +5,5 @@ pyparsing
 requests
 scipy
 wordcloud
+XlsxWriter
+pandas
