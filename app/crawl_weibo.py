@@ -3,6 +3,8 @@ import re
 
 import jieba
 import jieba.analyse
+import matplotlib
+matplotlib.use('TkAgg')
 import matplotlib.pyplot as plt
 import requests
 import urllib3
@@ -185,18 +187,18 @@ def fetch_myself_data(container_id, total):
 def generate_image():
     data = []
 
-    with codecs.open(BASE_DIR + '/data/weibo6.txt', 'r',
+    with codecs.open(BASE_DIR + '/example/wc的词库.txt', 'r',
                      encoding='utf-8') as f:
         for text in f.readlines():
             data.extend(jieba.analyse.extract_tags(text, topK=20))
         data = " ".join(data)
 
-        mask_img = imread(BASE_DIR + '/data/WechatIMG110.jpeg', flatten=True)
+        # mask_img = imread(BASE_DIR + '/data/WechatIMG110.jpeg', flatten=True)
 
         wordcloud = WordCloud(
             font_path='/System/Library/Fonts/PingFang.ttc',
             background_color='white',
-            mask=mask_img
+         #   mask=mask_img
         ).generate(data)
 
         plt.imshow(
@@ -205,4 +207,4 @@ def generate_image():
 
         plt.axis('off')
 
-        plt.savefig(BASE_DIR + '/example/tag_me.jpg', dpi=1600)
+        plt.savefig(BASE_DIR + '/example/wc.jpg', dpi=1600)
