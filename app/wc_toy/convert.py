@@ -11,7 +11,8 @@ from wordcloud import WordCloud, STOPWORDS
 
 d = path.dirname(__file__) if "__file__" in locals() else os.getcwd()
 
-text = open(path.join(d, 'assets/词云名单.txt')).read()
+#text = open(path.join(d, 'assets/词云名单.txt')).read()
+text = open(path.join(d, 'assets/词云名单2.txt')).read()
 
 alice_mask = np.array(Image.open(path.join(d, "assets/kaola_mask_2.png")))
 
@@ -38,6 +39,9 @@ def color_func(*args, **kwargs):
             '#086e3f',
             '#df601b',
             '#b32aae',
+            '#086e3f',
+            '#b32aae',
+            '#481a6c',
         ])
 
 #  def red_color_func(*args,**kwargs):
@@ -48,7 +52,8 @@ wc = WordCloud(
          max_words=2000, mask=alice_mask,
          font_path='/System/Library/Fonts/PingFang.ttc', # 避免中文乱码
          stopwords=stopwords,
-         color_func=color_func)
+         color_func=color_func
+         )
 
 wc.generate(text)
 
